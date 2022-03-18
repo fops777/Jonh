@@ -1,0 +1,459 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+  font-family: heebo;
+  color: #21243d;
+}
+ul li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+// 856px ширина контейнера по макету
+.container {
+  max-width: 886px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+.text {
+}
+.title-posts {
+  font-size: 22px;
+}
+// height: calc(40px + (100 - 40) * ((100vw - 320px) / (856 - 320)));
+
+// HEADER ==============================================================================
+
+.header {
+  padding: 0 15px;
+  margin: 0 auto;
+  max-width: 1050px;
+
+  &__content {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+  }
+  &__menu {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    /* ВЫСОТА HEADERа ---------*/
+    height: 100px;
+    @media (max-width: 856px) {
+      height: calc(40px + (100 - 40) * ((100vw - 320px) / (856 - 320)));
+    }
+  }
+}
+.menu {
+  &__openburger {
+  }
+  &__list {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    li {
+      margin-left: 35px;
+      @media (max-width: 856px) {
+        margin-left: calc(15px + (35 - 15) * ((100vw - 320px) / (856 - 320)));
+      }
+    }
+  }
+  &__link {
+    transition: 0.1s ease 0s;
+    font-size: 20px;
+    font-weight: 500;
+    color: black;
+    &:hover {
+      color: #ff6464;
+    }
+  }
+  &__closemenu {
+    display: none;
+    cursor: pointer;
+  }
+}
+@media (max-width: 767px) {
+  .menu {
+    &__openburger {
+      //БУРГЕР(три полоски)
+      display: block;
+      position: relative;
+      flex: 0 0 30px;
+      height: 20px;
+      &:before,
+      &:after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background-color: black;
+      }
+      &:before {
+        top: 0px;
+      }
+      &:after {
+        bottom: 0px;
+      }
+      span {
+        display: block;
+        background-color: black;
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        top: 9px;
+      }
+    }
+    &__list {
+      display: none;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 10;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(0, 0, 0, 0.95);
+      transition: top 0.5s ease;
+      li {
+        margin-bottom: 20px;
+      }
+    }
+    &__link {
+      //тег <а/> в li
+      font-size: 30px;
+      color: white;
+    }
+    &__closemenu {
+      /* крестик в меню */
+      color: white;
+      display: block;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 30px;
+    }
+  }
+}
+
+// HELLO ===================================================
+
+.hello {
+  padding: 38px 0px 70px 0px;
+
+  &__containerflex {
+    display: flex;
+    justify-content: space-between;
+
+    @media (max-width: 767px) {
+      flex-direction: column-reverse;
+      text-align: center;
+    }
+  }
+
+  &__content {
+    padding-right: 110px;
+    flex: 1 1 auto;
+    *:last-child {
+      margin-bottom: 0;
+    }
+    @media (max-width: 992px) {
+      //отступ между блоками
+      padding-right: 50px;
+    }
+    @media (max-width: 767px) {
+      padding-right: 0px;
+    }
+  }
+
+  &__title {
+    font-size: 44px;
+    line-height: 60 / 45 * 100%;
+    margin-bottom: 20px;
+    @media (max-width: 856px) {
+      margin-bottom: calc(15px + (20 - 15) * ((100vw - 320px) / (856 - 320)));
+      font-size: calc(32px + (44 - 32) * ((100vw - 320px) / (856 - 320)));
+    }
+    // line-height: 145%;
+    font-weight: 700;
+  }
+  &__text {
+    font-size: 16px;
+    line-height: 24 / 16 * 100%;
+    margin-bottom: 35px;
+    @media (max-width: 767px) {
+      margin-bottom: calc(22px + (35 - 22) * ((100vw - 320px) / (856 - 320)));
+    }
+  }
+  &__btn {
+    height: 47px;
+    background: #ff6464;
+    border-radius: 2px;
+    color: white;
+    padding: 0 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 29px;
+    text-align: center;
+    transition: all 0.2s ease 0s;
+    // lh макета делится на fz и * 100%
+    line-height: 29 / 20 * 100%;
+    &:hover {
+      background-color: hsl(0, 71%, 49%);
+    }
+  }
+  &__avatar {
+    img {
+      @media (max-width: 767px) {
+        height: 170px;
+        width: 170px;
+        margin-bottom: 20px;
+        @media (max-width: 856px) {
+          height: calc(170px + (243 - 170) * ((100vw - 320px) / (856 - 320)));
+          width: calc(170px + (243 - 170) * ((100vw - 320px) / (856 - 320)));
+          margin-bottom: calc(
+            10px + (20 - 10) * ((100vw - 320px) / (856 - 320))
+          );
+        }
+      }
+    }
+  }
+  @media (max-width: 767px) {
+    //отступ между блоками
+    padding: 0px 0px 50px 0px;
+  }
+}
+
+// RECENT POSTS ============================================
+
+.recent-posts {
+  background-color: #edf7fa;
+  padding: 25px 0px 30px 0px;
+
+  &__container {
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__title {
+    padding: 0px 0px 20px 0px;
+    @media (max-width: 424px) {
+      margin: 0 auto;
+      font-size: 18px;
+      padding: 0px 0px 15px 0px;
+    }
+  }
+
+  &__view-all {
+    color: #00a8cc;
+    font-size: 16px;
+    line-height: 24px;
+    flex: 0 0 auto;
+    cursor: pointer;
+    @media (max-width: 424px) {
+      display: none;
+    }
+  }
+
+  &__items {
+    display: flex;
+    margin: 0px -10px;
+    @media (max-width: 747px) {
+      flex-direction: column;
+    }
+  }
+
+  &__column {
+    flex: 0 1 50%;
+    padding: 0px 10px;
+    margin-bottom: 17px;
+  }
+
+  &__item {
+    background-color: white;
+    border-radius: 4px;
+    box-shadow: 0px, 4px rgba(187, 225, 250, 0.25);
+    padding: 23px;
+    height: 100%;
+  }
+  &__titlepost {
+    display: inline-block; // потамучто это тек <a>
+    font-size: 26px;
+    line-height: 38 / 26 * 100%;
+    color: #21243d;
+    margin-bottom: 17px;
+    font-weight: bold;
+  }
+  &__info {
+    font-size: 18px;
+    margin-bottom: 15px;
+    span {
+      margin: 15px;
+    }
+  }
+
+  &__text {
+    font-size: 16px;
+    font-weight: 400;
+  }
+}
+
+// WORKS ===================================================
+
+.featured-works {
+  padding: 30px 0px 0px 0px;
+  &__container {
+  }
+
+  &__title {
+    margin:0px 0px 20px 0px;
+    @media (max-width: 767px) {
+      font-size: 18px;
+      align-items: center;
+    }
+  }
+}
+
+.works {
+  &__item {
+    display: flex;
+    align-items: flex-start;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+    @media (max-width: 767px) {
+      flex-direction: column;
+      align-items: normal;
+      flex: 0 0 90%;
+      margin-right: 5%;
+      // overflow: auto;
+    }
+    &::last-child{
+      margin-bottom: 0px;
+    }
+  }
+
+  &__image {
+    position: relative;
+    flex: 0 0 246px;
+    min-height: 180px;
+    display: block;
+    img {
+      border-radius: 6px;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      object-fit: cover;
+    }
+    @media (max-width: 767px) {
+      margin-bottom: 17px;
+      padding-bottom: 70%;
+    }
+  }
+
+  &__body {
+    flex: 1 1 auto;
+    padding-left: 18px;
+    @media (max-width: 767px) {
+      padding-left: 0px;
+    }
+  }
+
+  &__title {
+    color: inherit;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 44.66 / 30 * 100%;
+    display: inline-block;
+    margin-bottom: 15px;
+    @media (max-width: 767px) {
+      font-size: calc(24px + (30 - 24) * ((100vw - 320px) / (856 - 320)));
+    }
+  }
+
+  &__info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+
+  &__year {
+    background-color: #142850;
+    border-radius: 16px;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    height: 25px;
+    padding: 0 10px;
+    font-weight: 900;
+    font-size: 18px;
+    display: inline-flex;
+  }
+
+  &__category {
+    color: #8695a4;
+    font-size: 20px;
+    margin-left: 25px;
+  }
+
+  &__text {
+  }
+  // Самодельный слайдер)
+  @media (max-width: 767px) {
+    display: flex;
+    overflow: scroll;
+  }
+}
+
+// FOOTER ==================================================
+
+.footer {
+  text-align: center;
+  padding: 50px 0px;
+  &__container {
+  }
+
+  &__social {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+  }
+
+  &__copy {
+    font-size: 14px;
+  }
+  @media(max-width: 767px){
+    padding: calc(25px + (50 - 25) * ((100vw - 320px) / (856 - 320)));
+}
+}
+
+.social {
+
+  &__item {
+    width: 30px;
+    height: 30px;
+    margin: 0 17px;
+  }
+
+}
+
+
